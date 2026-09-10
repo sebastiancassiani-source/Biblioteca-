@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS biblioteca;
 CREATE DATABASE biblioteca;
 USE biblioteca;
 CREATE TABLE usuarios (
-    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     apellido VARCHAR(100) NOT NULL,
     documento VARCHAR(20) UNIQUE NOT NULL,
@@ -11,13 +11,13 @@ CREATE TABLE usuarios (
 );
 
 CREATE TABLE autores (
-    id_autor INT AUTO_INCREMENT PRIMARY KEY,
+    id_autor INT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     apellido VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE libros (
-    id_libro INT AUTO_INCREMENT PRIMARY KEY,
+    id_libro INT PRIMARY KEY,
     titulo VARCHAR(200) NOT NULL,
     isbn VARCHAR(20),
     anio_publicacion INT,
@@ -28,7 +28,7 @@ CREATE TABLE libros (
 );
 
 CREATE TABLE prestamos (
-    id_prestamo INT AUTO_INCREMENT PRIMARY KEY,
+    id_prestamo INT PRIMARY KEY,
     id_usuario INT NOT NULL,
     id_libro INT NOT NULL,
     fecha_prestamo DATE NOT NULL,
@@ -42,14 +42,13 @@ CREATE TABLE prestamos (
 );
 
 CREATE TABLE devoluciones (
-    id_devolucion INT AUTO_INCREMENT PRIMARY KEY,
+    id_devolucion INT PRIMARY KEY,
     id_prestamo INT NOT NULL,
     fecha_devolucion DATE NOT NULL,
 
     FOREIGN KEY (id_prestamo)
         REFERENCES prestamos(id_prestamo)
 );
-
 
 INSERT INTO usuarios 
 (id_usuario, nombre, apellido, documento, telefono, correo)
